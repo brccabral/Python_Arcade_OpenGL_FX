@@ -18,6 +18,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     // Fade our orange color
     vec3 color = strength * vec3(1.0, 0.5, 0.0);
 
+    // Tone mapping
+    color = 1.0 - exp( -color );
+    
     // Output to the screen
     fragColor = vec4(color, 1.0);
 }
