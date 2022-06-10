@@ -10,13 +10,13 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 
     // How far is the current pixel from the origin (0, 0)
     float distance = length(rpos);
+    // Use an inverse 1/distance to set the fade
+    float scale = 0.02;
+    float strength = 1.0 / distance * scale;
 
-    // Are we are 20% of the screen away from the origin?
-    if (distance > 0.2) {
-        // Black
-        fragColor = vec4(0.0, 0.0, 0.0, 1.0);
-    } else {
-        // White
-        fragColor = vec4(1.0, 1.0, 1.0, 1.0);
-    }
+    // Fade our white color
+    vec3 color = strength * vec3(1.0, 1.0, 1.0);
+
+    // Output to the screen
+    fragColor = vec4(color, 1.0);
 }
