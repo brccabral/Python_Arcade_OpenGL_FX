@@ -12,7 +12,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float distance = length(rpos);
     // Use an inverse 1/distance to set the fade
     float scale = 0.02;
-    float strength = 1.0 / distance * scale;
+    float fade = 1.5;
+    float strength = pow(1.0 / distance * scale, fade);
 
     // Fade our white color
     vec3 color = strength * vec3(1.0, 1.0, 1.0);
