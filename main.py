@@ -15,6 +15,11 @@ class MyGame(arcade.Window):
         self.shadertoy = Shadertoy(size=self.get_size(), main_source=shader_source)
 
     def on_draw(self):
+        # Set uniform data to send to the GLSL shader
+        self.shadertoy.program["pos"] = self.mouse["x"], self.mouse["y"]
+        self.shadertoy.program["color"] = arcade.get_three_float_color(
+            arcade.color.NEON_GREEN
+        )
         # Run the GLSL code
         self.shadertoy.render()
 
