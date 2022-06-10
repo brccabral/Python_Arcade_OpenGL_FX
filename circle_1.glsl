@@ -15,8 +15,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float fade = 1.5;
     float strength = pow(1.0 / distance * scale, fade);
 
-    // Fade our white color
-    vec3 color = strength * vec3(1.0, 1.0, 1.0);
+    // Fade our orange color
+    vec3 color = strength * vec3(1.0, 0.5, 0.0);
 
     // Output to the screen
     fragColor = vec4(color, 1.0);
