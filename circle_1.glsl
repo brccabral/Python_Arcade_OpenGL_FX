@@ -1,5 +1,5 @@
+// inputs
 uniform vec2 pos;
-
 uniform vec3 color;
 
 
