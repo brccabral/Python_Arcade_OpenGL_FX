@@ -18,7 +18,7 @@ mat2 Rot(float angle){
 
 float sdSphere(vec3 p, float r )
 {
-  vec3 offset = vec3(0, 0, -4);
+  vec3 offset = vec3(0, 0, -2);
   return length(p - offset) - r;
 }
 
@@ -114,13 +114,13 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
   float d = rayMarch(ro, rd, MIN_DIST, MAX_DIST); // distance to sphere
 
-  if (d+0.5 > MAX_DIST) {
+  if (d+1. > MAX_DIST) {
     col = backgroundColor; // ray didn't hit anything
   } else {
     vec3 p = ro + rd * d; // point on sphere we discovered from ray marching
     vec3 normal = calcNormal(p);
     vec3 lightPosition = vec3(sin(iTime*0.5)*2.0, 0.0, cos(iTime*0.5)*2.0) ;
-    vec3 lightDirection = normalize(lightPosition - p);
+    vec3 lightDirection = normalize(lightPosition - p)*2.;
 
     // Calculate diffuse reflection by taking the dot product of
     // the normal and the light direction.
