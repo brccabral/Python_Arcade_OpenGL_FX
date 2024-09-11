@@ -1,12 +1,12 @@
 import arcade
-from arcade.experimental import Shadertoy
+from arcade.experimental.shadertoy import Shadertoy
 
 
 # Derive an application window from Arcade's parent Window class
 class MyGame(arcade.Window):
     def __init__(self):
         # Call the parent constructor
-        super().__init__(width=1920, height=1080)
+        super().__init__(width=1536, height=864)  # type:ignore
 
         # Load a file and create a shader from it
         # file_name = "circle_1.glsl"
@@ -24,7 +24,8 @@ class MyGame(arcade.Window):
 
     def on_draw(self):
         self.clear()
-        mouse_pos = self.mouse["x"], self.mouse["y"]
+        if self.mouse:
+            mouse_pos = self.mouse["x"], self.mouse["y"]
 
         # Set uniform data to send to the GLSL shader
         #  circle_1.glsl inputs
